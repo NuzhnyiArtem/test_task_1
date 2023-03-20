@@ -37,3 +37,6 @@ YOLOv5 - это модель семейства моделей компьюте�
 #### precision
 ![P_curve](https://user-images.githubusercontent.com/116677134/226430816-fff818cb-7f66-4b36-af5b-70c33ea96339.png)
 
+#### confusion matrix
+![confusion_matrix](https://user-images.githubusercontent.com/116677134/226431144-49838eb7-778c-4207-8729-aae53ebc5b2e.png)
+
