@@ -33,27 +33,43 @@ class Rules:
     overlap_height_ratio: float - Перекрытие среза по высоте. По умолчанию установлен 0.2
     overlap_width_ratio: float - Перекрытие среза по ширине. По умолчанию установлен 0.2
     """
-    def __init__(self, path: str) -> None:
+    def __init__(self,
+                 path: str,
+                 confidence_threshold: float=0.85,
+                 model_type: str="yolov5",
+                 device: str="cpu",
+                 slice_height: int=640,
+                 slice_width: int=640,
+                 overlap_height_ratio: float=0.2,
+                 overlap_width_ratio: float=0.2
+                 ) -> None:
         self.path = path
+        self.confidence_threshold = confidence_threshold
+        self.model_type = model_type
+        self.device = device
+        self.slice_height = slice_height
+        self.slice_width = slice_width
+        self.overlap_height_ratio = overlap_height_ratio
+        self.overlap_width_ratio = overlap_width_ratio
 
     @method_decorator
     def find_matches(self, image: str) -> Dict[str, List[List[int]]]:
-        
+
         try:
             detection_model = AutoDetectionModel.from_pretrained(
-                model_type='yolov5',
+                model_type=self.model_type,
                 model_path=self.path,
-                confidence_threshold=0.85,
-                device="cpu",
+                confidence_threshold=self.confidence_threshold,
+                device=self.device,
             )
 
             result = get_sliced_prediction(
                 image,
                 detection_model,
-                slice_height=640,
-                slice_width=640,
-                overlap_height_ratio=0.2,
-                overlap_width_ratio=0.2
+                slice_height=self.slice_height,
+                slice_width=self.slice_width,
+                overlap_height_ratio=self.overlap_height_ratio,
+                overlap_width_ratio=self.overlap_width_ratio
             )
             res = defaultdict(list)
             result.export_visuals(export_dir="demo_data/", text_size=0.5, rect_th=2)
