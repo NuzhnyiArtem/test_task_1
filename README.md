@@ -9,6 +9,7 @@
 2. Активировать виртуальное окружение\
 `source myenv/bin/activate`
 3. Установить зависимости\
+`git clone https://github.com/NuzhnyiArtem/test_task_1`
 
 
 ### Информация о количестве данных
