@@ -9,8 +9,8 @@
 2. Активировать виртуальное окружение\
 `source myenv/bin/activate`
 3. Установить зависимости\
-`git clone https://github.com/NuzhnyiArtem/test_task_1` 
-`cd test_task_1`
+`git clone https://github.com/NuzhnyiArtem/test_task_1`\
+`cd test_task_1`\
 `pip install -r requirements.in`
 
 
