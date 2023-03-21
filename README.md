@@ -29,13 +29,13 @@ YOLOv5 - это модель семейства моделей компьюте�
 
 ### Метрики
 #### F1 - кривая
-![F1_curve](https://user-images.githubusercontent.com/116677134/226430303-58d9b06d-e243-4930-a9a3-d2cd84cc2531.png)
+F1=0.9911
 
 #### recall
-![R_curve](https://user-images.githubusercontent.com/116677134/226430772-534f4db6-8119-4113-b549-a9ff6af2e1ef.png)
+recall = 0.9903
 
 #### precision
-![P_curve](https://user-images.githubusercontent.com/116677134/226430816-fff818cb-7f66-4b36-af5b-70c33ea96339.png)
+precision = 0.992
 
 #### confusion matrix
 ![confusion_matrix](https://user-images.githubusercontent.com/116677134/226431144-49838eb7-778c-4207-8729-aae53ebc5b2e.png)
