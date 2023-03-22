@@ -1,5 +1,4 @@
 import time
-from tkinter.filedialog import askopenfilename
 from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction
 from typing import List, Dict, Callable
