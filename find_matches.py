@@ -5,6 +5,7 @@ from sahi.predict import get_sliced_prediction
 from typing import List, Dict, Callable
 from loguru import logger
 from collections import defaultdict
+from sys import argv
 
 
 def method_decorator(func: Callable):
@@ -84,6 +85,6 @@ class Rules:
 
 
 yolov5_model_path = r''
-image = askopenfilename()
+image = argv[2]
 r = Rules(yolov5_model_path)
 r.find_matches(image)
