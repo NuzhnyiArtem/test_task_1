@@ -11,7 +11,7 @@
 3. Установить зависимости\
 `git clone https://github.com/NuzhnyiArtem/test_task_1`\
 `cd test_task_1`\
-`pip install -r requirements.in`
+`pip3.8 install -r requirements.in`
 4. Путь к датасету:\
 `/home/anuzhnyj/yolov5/runs/train/result5/weights/Yolov5_s_5h_640.pt`
 
