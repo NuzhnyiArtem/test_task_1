@@ -83,7 +83,7 @@ class Rules:
             logger.exception(e)
 
 
-yolov5_model_path = r'C:\Users\mlwk\PycharmProjects\marking\testsplit\result5\weights\best.pt'
+yolov5_model_path = r''
 image = askopenfilename()
 r = Rules(yolov5_model_path)
 r.find_matches(image)
