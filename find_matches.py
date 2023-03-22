@@ -84,7 +84,7 @@ class Rules:
             logger.exception(e)
 
 
-yolov5_model_path = r''
+yolov5_model_path = argv[4]
 image = argv[2]
 r = Rules(yolov5_model_path)
 r.find_matches(image)
