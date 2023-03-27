@@ -25,24 +25,32 @@ def method_decorator(func: Callable):
 
 class Rules:
     """Принимает на вход путь к модели, имеет изменяемые параметры:
-    model_type: str - Тип модели. По умолчанию установлен 'yolov5'.
-    confidence_threshold: float - Пороговое значение. По умолчанию установлен 0,85.
-    device: str - Инференс модели будет работать на CPU или GPU. По умолчанию установлен 'cpu'.
-    slice_height: int - Высота среза изображения. По умолчанию установлен 640.
-    slice_width: int - Ширина среза изображения. По умолчанию установлен 640.
-    overlap_height_ratio: float - Перекрытие среза по высоте. По умолчанию установлен 0.2
-    overlap_width_ratio: float - Перекрытие среза по ширине. По умолчанию установлен 0.2
+    model_type: str
+        Тип модели. По умолчанию установлен 'yolov5'.
+    confidence_threshold: float
+        Пороговое значение. По умолчанию установлен 0,85.
+    device: str
+        Инференс модели будет работать на CPU или GPU. По умолчанию установлен 'cpu'.
+    slice_height: int
+        Высота среза изображения. По умолчанию установлен 640.
+    slice_width: int
+        Ширина среза изображения. По умолчанию установлен 640.
+    overlap_height_ratio: float
+        Перекрытие среза по высоте. По умолчанию установлен 0.2
+    overlap_width_ratio: float
+        Перекрытие среза по ширине. По умолчанию установлен 0.2
     """
     def __init__(self,
                  path: str,
-                 confidence_threshold: float=0.85,
-                 model_type: str="yolov5",
-                 device: str="cpu",
-                 slice_height: int=640,
-                 slice_width: int=640,
-                 overlap_height_ratio: float=0.2,
-                 overlap_width_ratio: float=0.2
+                 confidence_threshold: float = 0.81,
+                 model_type: str = "yolov5",
+                 device: str = "cpu",
+                 slice_height: int = 640,
+                 slice_width: int = 640,
+                 overlap_height_ratio: float = 0.2,
+                 overlap_width_ratio: float = 0.2
                  ) -> None:
+
         self.path = path
         self.confidence_threshold = confidence_threshold
         self.model_type = model_type
@@ -53,7 +61,7 @@ class Rules:
         self.overlap_width_ratio = overlap_width_ratio
 
     @method_decorator
-    def find_matches(self, image: str) -> Dict[str, List[List[int]]]:
+    def find_matches(self, img: str) -> Dict[str, List[List[int]]]:
 
         try:
             detection_model = AutoDetectionModel.from_pretrained(
@@ -64,7 +72,7 @@ class Rules:
             )
 
             result = get_sliced_prediction(
-                image,
+                img,
                 detection_model,
                 slice_height=self.slice_height,
                 slice_width=self.slice_width,
@@ -72,7 +80,10 @@ class Rules:
                 overlap_width_ratio=self.overlap_width_ratio
             )
             res = defaultdict(list)
-            result.export_visuals(export_dir="demo_data/", text_size=0.5, rect_th=2)
+            result.export_visuals(export_dir="demo_data/",
+                                  text_size=0.5,
+                                  rect_th=2)
+
             q = result.to_coco_predictions()
 
             for rs in q:
