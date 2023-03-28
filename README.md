@@ -17,7 +17,7 @@
 `git clone https://github.com/NuzhnyiArtem/test_task_1`\
 `cd test_task_1`\
 `pip3.8 install -r requirements.in`
-4. Путь к датасету:\
+4. Путь к модели:\
 `/home/anuzhnyj/yolov5/runs/train/result5/weights/Yolov5_s_5h_640.pt`
 5. Для запуска из консоли:\
 `python3.8 find_matches.py --image <Путь к изображению> --model <Путь к модели>`
